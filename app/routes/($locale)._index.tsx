@@ -32,19 +32,11 @@ const heroVideos = [
   },
 ];
 
-const HOMEPAGE_SEO_QUERY = `#graphql
-  query SEO {
-    shop {
-      name
-      description
-    }
-  }
-` as const;
-
+/* GraphQL Query - simplified to match working catalog */
 const FEATURED_PRODUCTS_QUERY = `#graphql
   query FeaturedProducts($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    products(first: 20, sortKey: UPDATED_AT, reverse: true) {
+    products(first: 50) {
       nodes {
         id
         title
@@ -71,7 +63,12 @@ const FEATURED_PRODUCTS_QUERY = `#graphql
 
 export async function loader({ context, request }: LoaderFunctionArgs) {
   const { storefront } = context;
-  const { products } = await storefront.query(FEATURED_PRODUCTS_QUERY);
+  const { products } = await storefront.query(FEATURED_PRODUCTS_QUERY, {
+    variables: {
+      country: storefront.i18n.country,
+      language: storefront.i18n.language,
+    },
+  });
 
   return defer({
     products: products.nodes,
@@ -84,7 +81,7 @@ export default function Home() {
 
   // Map Shopify products to local structure
   const products = shopifyProducts.map((p) => ({
-    id: p.handle, // Use handle for correct linking (e.g., '램비-인형')
+    id: p.handle,
     name: p.title,
     englishName: p.title,
     koreanName: p.title,
@@ -92,7 +89,7 @@ export default function Home() {
     price: parseFloat(p.priceRange.minVariantPrice.amount),
     image: p.images.nodes[0]?.url || '',
     images: p.images.nodes.map((img) => img.url),
-    category: 'plushie', // Default fallback as specific mapping requires tags or types
+    category: 'plushie',
     stock: p.availableForSale ? 10 : 0,
     inStock: p.availableForSale,
     featured: true,
@@ -135,14 +132,17 @@ export default function Home() {
     [1, 0]
   );
 
-  // 제품 필터링 (재고 + 카테고리 + 검색)
+  // 제품 필터링 (카테고리 + 검색) - 필터링 로직 완화
   const filteredProducts = products.filter((product) => {
-    const isInStock = product.inStock; // 재고 있는 것만
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
+    // 1. 카테고리 필터링: 'all'이면 무조건 통과 (임시로 카테고리 체크 완화)
+    const matchesCategory = selectedCategory === 'all' || true;
+
+    // 2. 검색어 필터링
     const matchesSearch = product.koreanName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.englishName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return isInStock && matchesCategory && matchesSearch;
+
+    return matchesCategory && matchesSearch;
   });
 
   // 제품 정렬
