@@ -266,6 +266,19 @@ export default function Home() {
               </button>
             </div>
 
+            {/* Navigation Links (Added per request) */}
+            <nav className="mb-6 space-y-1">
+              <Link to="/" className="block px-4 py-2 text-sm font-medium text-gray-900 hover:bg-white/40 rounded transition-colors uppercase tracking-wide">
+                HOME
+              </Link>
+              <Link to="/collections/all" className="block px-4 py-2 text-sm font-medium text-gray-900 hover:bg-white/40 rounded transition-colors uppercase tracking-wide">
+                CATALOG
+              </Link>
+              <Link to="/contact" className="block px-4 py-2 text-sm font-medium text-gray-900 hover:bg-white/40 rounded transition-colors uppercase tracking-wide">
+                CONTACT
+              </Link>
+            </nav>
+
             {/* Auth Section */}
             <div className="mb-6">
               <AuthButton />
@@ -535,17 +548,7 @@ export default function Home() {
                 </div>
               </Link>
 
-              <div className="w-px h-14 lg:h-16 bg-gray-300 shrink-0" />
 
-              {/* Menu Item 4 */}
-              <button className="flex items-center gap-4 group shrink-0">
-                <div className="w-14 h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-all shadow-lg">
-                  <span className="text-3xl lg:text-4xl">▶️</span>
-                </div>
-                <span className="text-sm lg:text-base font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors whitespace-nowrap">
-                  영상
-                </span>
-              </button>
             </div>
           </motion.div>
         </div>

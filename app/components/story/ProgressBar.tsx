@@ -50,12 +50,12 @@ export function ProgressBar({ progress, onDragCloud, onDraggingCloud, totalSecti
   };
 
   return (
-    <div className="fixed bottom-32 left-1/2 -translate-x-1/2 z-50 w-80">
+    <div className="fixed bottom-40 lg:bottom-48 left-1/2 -translate-x-1/2 z-50 w-80">
       {/* Progress bar container */}
-      <div className="relative bg-white/30 backdrop-blur-sm rounded-full h-2 overflow-visible shadow-lg">
+      <div className="relative bg-white/40 backdrop-blur-md rounded-full h-3 overflow-visible shadow-xl border border-white/50">
         {/* Progress fill */}
         <motion.div
-          className="absolute top-0 left-0 h-full bg-gradient-to-r from-pink-300 via-blue-200 to-purple-300 rounded-full origin-left"
+          className="absolute top-0 left-0 h-full bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 rounded-full origin-left"
           style={{ scaleX: progress }}
         />
 
@@ -72,14 +72,25 @@ export function ProgressBar({ progress, onDragCloud, onDraggingCloud, totalSecti
           whileHover={{ scale: 1.15 }}
           whileTap={{ scale: 0.95 }}
         >
-          <div className="relative">
+          <div className="relative group">
             {/* Cotton candy cloud - MUCH BIGGER */}
-            <span className="text-7xl drop-shadow-2xl filter" style={{
-              filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.15))'
+            <span className="text-7xl drop-shadow-2xl filter block" style={{
+              filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.2))'
             }}>☁️</span>
+
+            {/* Drag Hint Arrow - Shows when not dragged far */}
+            <motion.div
+              className="absolute top-1/2 -right-8 -translate-y-1/2 text-2xl animate-bounce text-white drop-shadow-md pointer-events-none opacity-80"
+              initial={{ opacity: 1 }}
+              animate={{ x: [0, 5, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >
+              👉
+            </motion.div>
+
             {/* Sparkle effect */}
             <motion.span
-              className="absolute -top-2 -right-2 text-3xl"
+              className="absolute -top-2 -right-2 text-3xl pointer-events-none"
               animate={{
                 scale: [1, 1.3, 1],
                 opacity: [0.7, 1, 0.7],
@@ -101,9 +112,9 @@ export function ProgressBar({ progress, onDragCloud, onDraggingCloud, totalSecti
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="text-center text-white/80 text-xs mt-8"
+        className="text-center text-white font-bold text-sm mt-6 drop-shadow-md bg-black/20 py-1 px-3 rounded-full mx-auto w-fit backdrop-blur-sm"
       >
-        구름을 드래그해서 이야기를 넘겨보세요
+        구름을 오른쪽으로 밀어보세요! 💨
       </motion.p>
     </div>
   );
