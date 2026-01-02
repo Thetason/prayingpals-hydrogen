@@ -28,6 +28,7 @@ export default async function handleRequest(
       'self',
       'https://fonts.googleapis.com',
       'https://cdn.shopify.com',
+      "'unsafe-inline'",
     ],
     fontSrc: [
       'self',
