@@ -11,52 +11,78 @@ export default {
         contrast: 'rgb(var(--color-contrast) / <alpha-value>)',
         notice: 'rgb(var(--color-accent) / <alpha-value>)',
         shopPay: 'rgb(var(--color-shop-pay) / <alpha-value>)',
-      },
-      screens: {
-        sm: '32em',
-        md: '48em',
-        lg: '64em',
-        xl: '80em',
-        '2xl': '96em',
-        'sm-max': {max: '48em'},
-        'sm-only': {min: '32em', max: '48em'},
-        'md-only': {min: '48em', max: '64em'},
-        'lg-only': {min: '64em', max: '80em'},
-        'xl-only': {min: '80em', max: '96em'},
-        '2xl-only': {min: '96em'},
-      },
-      spacing: {
-        nav: 'var(--height-nav)',
-        screen: 'var(--screen-height, 100vh)',
-      },
-      height: {
-        screen: 'var(--screen-height, 100vh)',
-        'screen-no-nav':
-          'calc(var(--screen-height, 100vh) - var(--height-nav))',
-        'screen-dynamic': 'var(--screen-height-dynamic, 100vh)',
-      },
-      width: {
-        mobileGallery: 'calc(100vw - 3rem)',
+        // Little Nazareth Custom Colors
+        'sunset': {
+          DEFAULT: '#FF9B71',
+          light: '#FFB893',
+          dark: '#E67A4F',
+        },
+        'heaven': {
+          DEFAULT: '#B5A4D9',
+          light: '#D4C8ED',
+          dark: '#9384BF',
+        },
+        'peace': {
+          DEFAULT: '#9CC5A1',
+          light: '#C4E3C9',
+          dark: '#7BA580',
+        },
+        'holy': {
+          DEFAULT: '#FFD700',
+          light: '#FFE34D',
+          dark: '#D4AF37',
+        },
+        'neutral': {
+          cloud: '#FFF8F0',
+          cream: '#F5E6D3',
+          sand: '#E8D4B8',
+        },
+        'text': {
+          primary: '#4A3828',
+          secondary: '#8B7355',
+          muted: '#B8A692',
+        },
+        'char-lamb': {
+          DEFAULT: '#FFE5E5',
+          accent: '#FFB3BA'
+        }
       },
       fontFamily: {
         sans: ['Helvetica Neue', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['"IBMPlexSerif"', 'Palatino', 'ui-serif'],
+        handwriting: ['"Nanum Pen Script"', 'cursive'],
       },
-      fontSize: {
-        display: ['var(--font-size-display)', '1.1'],
-        heading: ['var(--font-size-heading)', '1.25'],
-        lead: ['var(--font-size-lead)', '1.333'],
-        copy: ['var(--font-size-copy)', '1.5'],
-        fine: ['var(--font-size-fine)', '1.333'],
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'holy-glow': 'holy-glow 3s ease-in-out infinite',
+        'reveal': 'reveal 0.8s ease-out forwards',
+        'spin-reveal': 'spin-reveal 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
       },
-      maxWidth: {
-        'prose-narrow': '45ch',
-        'prose-wide': '80ch',
-      },
-      boxShadow: {
-        border: 'inset 0px 0px 0px 1px rgb(var(--color-primary) / 0.08)',
-        darkHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.4)',
-        lightHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.05)',
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        'holy-glow': {
+          '0%, 100%': {
+            boxShadow: '0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.3)'
+          },
+          '50%': {
+            boxShadow: '0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 215, 0, 0.5)'
+          },
+        },
+        reveal: {
+          'from': { opacity: '0', transform: 'scale(0.8) translateY(40px)' },
+          'to': { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+        'spin-reveal': {
+          'from': { opacity: '0', transform: 'rotateY(180deg) scale(0)' },
+          'to': { opacity: '1', transform: 'rotateY(0deg) scale(1)' },
+        },
+        'fade-in': {
+          'from': { opacity: '0' },
+          'to': { opacity: '1' },
+        }
       },
     },
   },
