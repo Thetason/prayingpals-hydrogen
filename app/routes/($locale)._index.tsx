@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
-import { Link, useNavigate } from "@remix-run/react";
+import { defer, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
+import { useLoaderData, Link, useNavigate } from "@remix-run/react";
 import { characters } from "@/lib/characters";
-import { products, categories } from "@/lib/productData";
+import { categories } from "@/lib/productData";
 import { storyContent } from "@/lib/storyData";
 import { StorySection } from "@/components/story/StorySection";
 import { ProgressBar } from "@/components/story/ProgressBar";
@@ -31,8 +32,71 @@ const heroVideos = [
   },
 ];
 
+const HOMEPAGE_SEO_QUERY = `#graphql
+  query SEO {
+    shop {
+      name
+      description
+    }
+  }
+` as const;
+
+const FEATURED_PRODUCTS_QUERY = `#graphql
+  query FeaturedProducts($country: CountryCode, $language: LanguageCode)
+    @inContext(country: $country, language: $language) {
+    products(first: 20, sortKey: UPDATED_AT, reverse: true) {
+      nodes {
+        id
+        title
+        handle
+        description
+        availableForSale
+        priceRange {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+        images(first: 5) {
+          nodes {
+            url
+            altText
+          }
+        }
+        productType
+      }
+    }
+  }
+` as const;
+
+export async function loader({ context, request }: LoaderFunctionArgs) {
+  const { storefront } = context;
+  const { products } = await storefront.query(FEATURED_PRODUCTS_QUERY);
+
+  return defer({
+    products: products.nodes,
+  });
+}
+
 export default function Home() {
+  const { products: shopifyProducts } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
+
+  // Map Shopify products to local structure
+  const products = shopifyProducts.map((p) => ({
+    id: p.handle, // Use handle for correct linking (e.g., '램비-인형')
+    name: p.title,
+    englishName: p.title,
+    koreanName: p.title,
+    description: p.description,
+    price: parseFloat(p.priceRange.minVariantPrice.amount),
+    image: p.images.nodes[0]?.url || '',
+    images: p.images.nodes.map((img) => img.url),
+    category: 'plushie', // Default fallback as specific mapping requires tags or types
+    stock: p.availableForSale ? 10 : 0,
+    inStock: p.availableForSale,
+    featured: true,
+  }));
 
   // 랜덤 히어로 영상 선택 - 클라이언트 사이드에서만 실행
   const [currentHeroVideo, setCurrentHeroVideo] = useState(heroVideos[0]); // 기본값: 첫 번째 영상

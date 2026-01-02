@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 
 export function KakaoLoginButton() {
   const handleLogin = () => {
-    window.location.href = '/api/auth/kakao/login';
+    // Temporary redirection to default login until Kakao Auth is implemented
+    window.location.href = '/account/login';
   };
 
   return (
