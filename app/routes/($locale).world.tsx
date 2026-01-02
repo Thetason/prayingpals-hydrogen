@@ -1,6 +1,4 @@
 
-import { SplineCharacter } from '@/components/spline/SplineCharacter';
-import { getCharacterScene, isSceneReady } from '@/lib/splineScenes';
 import { characters } from '@/lib/characters';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -54,32 +52,26 @@ export default function WorldPage() {
                 </div>
             </header>
 
-            {/* Main 3D Scene */}
-            <div className="absolute inset-0 pt-24">
-                {/* 루루 양 (첫 번째 캐릭터) */}
-                <div className="w-full h-full">
-                    <SplineCharacter
-                        characterId="lamb"
-                        sceneUrl={getCharacterScene('lamb')}
-                        onClick={() => setSelectedCharacter('lamb')}
-                        onLoad={() => handleCharacterLoad('lamb')}
-                    />
+            {/* Main 3D Scene Placeholder */}
+            <div className="absolute inset-0 pt-24 flex items-center justify-center">
+                <div className="text-center p-8 bg-white/40 backdrop-blur-md rounded-3xl shadow-xl max-w-lg mx-6">
+                    <div className="text-8xl mb-6 animate-bounce">🌍</div>
+                    <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                        3D Little Nazareth
+                    </h2>
+                    <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                        현재 3D 월드는 리뉴얼 중입니다!<br />
+                        곧 더 멋진 모습으로 찾아올게요.
+                    </p>
+                    <Link to="/">
+                        <button className="px-8 py-3 bg-white text-sky-600 font-bold rounded-full shadow-lg hover:scale-105 transition-transform">
+                            홈으로 돌아가기
+                        </button>
+                    </Link>
                 </div>
             </div>
 
-            {/* Progress Indicator */}
-            {!isSceneReady('lamb') && (
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-full px-8 py-4 shadow-lg">
-                    <div className="text-center">
-                        <p className="text-sm font-medium text-gray-700 mb-2">
-                            🎨 루루 양을 Spline에서 만들어주세요!
-                        </p>
-                        <p className="text-xs text-gray-500">
-                            SPLINE_GUIDE.md 파일을 참고하세요
-                        </p>
-                    </div>
-                </div>
-            )}
+
 
             {/* Character Story Modal */}
             <AnimatePresence>

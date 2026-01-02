@@ -27,7 +27,6 @@
     "@shopify/cli": "^3.74.1",
     "@shopify/hydrogen": "^2025.1.1",
     "@shopify/remix-oxygen": "^2.0.10",
-    "@splinetool/react-spline": "^4.1.0",
     "@splinetool/runtime": "^1.12.28",
     "clsx": "^1.2.1",
     "cross-env": "^7.0.3",
