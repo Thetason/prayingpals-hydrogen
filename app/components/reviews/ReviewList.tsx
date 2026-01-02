@@ -1,6 +1,6 @@
 'use client';
 
-import { useReviewStore, Review } from '@/lib/store/reviewStore';
+import { useReviewStore, Review } from '~/lib/store/reviewStore';
 import { motion } from 'framer-motion';
 
 interface ReviewListProps {

@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from '@remix-run/react';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
-import { storyContent } from '@/lib/storyData';
-import { StorySection } from '@/components/story/StorySection';
-import { ProgressBar } from '@/components/story/ProgressBar';
-import { SoundToggle } from '@/components/story/SoundToggle';
+import { storyContent } from '~/lib/storyData';
+import { StorySection } from '~/components/story/StorySection';
+import { ProgressBar } from '~/components/story/ProgressBar';
+import { SoundToggle } from '~/components/story/SoundToggle';
 
 export default function StoryPage() {
     const [currentSection, setCurrentSection] = useState(0);

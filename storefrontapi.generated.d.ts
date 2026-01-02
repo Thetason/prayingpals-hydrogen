@@ -199,10 +199,6 @@ export type GetShopPrimaryDomainQuery = {
   shop: {primaryDomain: Pick<StorefrontAPI.Domain, 'url'>};
 };
 
-export type SeoQueryVariables = StorefrontAPI.Exact<{[key: string]: never}>;
-
-export type SeoQuery = {shop: Pick<StorefrontAPI.Shop, 'name' | 'description'>};
-
 export type FeaturedProductsQueryVariables = StorefrontAPI.Exact<{
   country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
   language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
@@ -1088,11 +1084,7 @@ interface GeneratedQueryTypes {
     return: GetShopPrimaryDomainQuery;
     variables: GetShopPrimaryDomainQueryVariables;
   };
-  '#graphql\n  query SEO {\n    shop {\n      name\n      description\n    }\n  }\n': {
-    return: SEOQuery;
-    variables: SEOQueryVariables;
-  };
-  '#graphql\n  query FeaturedProducts($country: CountryCode, $language: LanguageCode)\n    @inContext(country: $country, language: $language) {\n    products(first: 20, sortKey: UPDATED_AT, reverse: true) {\n      nodes {\n        id\n        title\n        handle\n        description\n        availableForSale\n        priceRange {\n          minVariantPrice {\n            amount\n            currencyCode\n          }\n        }\n        images(first: 5) {\n          nodes {\n            url\n            altText\n          }\n        }\n        productType\n      }\n    }\n  }\n': {
+  '#graphql\n  query FeaturedProducts($country: CountryCode, $language: LanguageCode)\n    @inContext(country: $country, language: $language) {\n    products(first: 50) {\n      nodes {\n        id\n        title\n        handle\n        description\n        availableForSale\n        priceRange {\n          minVariantPrice {\n            amount\n            currencyCode\n          }\n        }\n        images(first: 5) {\n          nodes {\n            url\n            altText\n          }\n        }\n        productType\n      }\n    }\n  }\n': {
     return: FeaturedProductsQuery;
     variables: FeaturedProductsQueryVariables;
   };

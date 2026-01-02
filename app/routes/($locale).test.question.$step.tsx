@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "@remix-run/react";
-import { questions } from "@/lib/questions";
+import { questions } from "~/lib/questions";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function QuestionPage() {

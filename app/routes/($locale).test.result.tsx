@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "@remix-run/react";
 import { motion } from "framer-motion";
-import { getCharacterFromAnswers } from "@/lib/questions";
-import { characters } from "@/lib/characters";
+import { getCharacterFromAnswers } from "~/lib/questions";
+import { characters } from "~/lib/characters";
 import { TypeAnimation } from "react-type-animation";
 
 export default function ResultPage() {

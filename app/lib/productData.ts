@@ -172,8 +172,8 @@ export const products: Product[] = [
 
 export const categories = {
   plushie: { name: '인형', emoji: '🧸' },
-  sticker: { name: '스티커', emoji: '✨' },
-  book: { name: '책', emoji: '📚' },
-  accessory: { name: '액세서리', emoji: '🎒' },
-  homegoods: { name: '홈굿즈', emoji: '🏠' },
+  // sticker: { name: '스티커', emoji: '✨' },
+  // book: { name: '책', emoji: '📚' },
+  // accessory: { name: '액세서리', emoji: '🎒' },
+  // homegoods: { name: '홈굿즈', emoji: '🏠' },
 };

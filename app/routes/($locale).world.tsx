@@ -1,5 +1,5 @@
 
-import { characters } from '@/lib/characters';
+import { characters } from '~/lib/characters';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@remix-run/react';

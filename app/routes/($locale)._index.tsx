@@ -2,13 +2,13 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
 import { defer, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
 import { useLoaderData, Link, useNavigate } from "@remix-run/react";
-import { characters } from "@/lib/characters";
-import { categories } from "@/lib/productData";
-import { storyContent } from "@/lib/storyData";
-import { StorySection } from "@/components/story/StorySection";
-import { ProgressBar } from "@/components/story/ProgressBar";
-import { useCartStore } from "@/lib/store/cartStore";
-import { AuthButton } from "@/components/auth/AuthButton";
+import { characters } from "~/lib/characters";
+import { categories } from "~/lib/productData";
+import { storyContent } from "~/lib/storyData";
+import { StorySection } from "~/components/story/StorySection";
+import { ProgressBar } from "~/components/story/ProgressBar";
+import { useCartStore } from "~/lib/store/cartStore";
+import { AuthButton } from "~/components/auth/AuthButton";
 
 type SortOption = 'featured' | 'price-asc' | 'price-desc' | 'name';
 

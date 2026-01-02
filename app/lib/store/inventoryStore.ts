@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { products } from '@/lib/productData';
+import { products } from '~/lib/productData';
 
 interface InventoryItem {
   productId: string;

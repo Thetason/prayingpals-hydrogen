@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useReviewStore } from '@/lib/store/reviewStore';
+import { useReviewStore } from '~/lib/store/reviewStore';
 import { motion } from 'framer-motion';
 
 interface ReviewFormProps {

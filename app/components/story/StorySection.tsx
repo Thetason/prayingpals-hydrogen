@@ -1,6 +1,6 @@
 'use client';
 
-import { StorySection as StorySectionType } from '@/lib/storyData';
+import { StorySection as StorySectionType } from '~/lib/storyData';
 import { DotPattern } from './DotPattern';
 import { SpeechBubble } from './SpeechBubble';
 import { PolaroidPhoto } from './PolaroidPhoto';

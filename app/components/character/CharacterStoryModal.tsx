@@ -1,6 +1,6 @@
 'use client';
 
-import { CharacterStory } from '@/lib/characterData';
+import { CharacterStory } from '~/lib/characterData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from '@remix-run/react';
 import { useEffect } from 'react';

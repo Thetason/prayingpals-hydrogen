@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useAuthStore } from '@/lib/store/authStore';
+import { useAuthStore } from '~/lib/store/authStore';
 import { KakaoLoginButton } from './KakaoLoginButton';
 import { UserProfile } from './UserProfile';
 

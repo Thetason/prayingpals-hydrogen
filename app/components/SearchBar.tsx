@@ -2,7 +2,7 @@
 
 import { useNavigate } from '@remix-run/react';
 import { useState, useRef, useEffect } from 'react';
-import { products } from '@/lib/productData';
+import { products } from '~/lib/productData';
 import { Link } from '@remix-run/react';
 import { AnimatePresence, motion } from 'framer-motion';
 

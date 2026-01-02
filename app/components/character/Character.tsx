@@ -1,7 +1,7 @@
 'use client';
 
-import { CharacterStory } from '@/lib/characterData';
-import { CharacterPosition } from '@/lib/store/characterWorldStore';
+import { CharacterStory } from '~/lib/characterData';
+import { CharacterPosition } from '~/lib/store/characterWorldStore';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 

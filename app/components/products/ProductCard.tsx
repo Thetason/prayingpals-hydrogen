@@ -1,10 +1,10 @@
 'use client';
 
-import { Product } from '@/lib/productData';
+import { Product } from '~/lib/productData';
 import { motion } from 'framer-motion';
 import { Link } from '@remix-run/react';
-import { useCartStore } from '@/lib/store/cartStore';
-import { useWishlistStore } from '@/lib/store/wishlistStore';
+import { useCartStore } from '~/lib/store/cartStore';
+import { useWishlistStore } from '~/lib/store/wishlistStore';
 import { useState } from 'react';
 
 interface ProductCardProps {

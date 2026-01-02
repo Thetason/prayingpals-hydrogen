@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAuthStore } from '@/lib/store/authStore';
+import { useAuthStore } from '~/lib/store/authStore';
 
 export function UserProfile() {
   const { user, isLoading, fetchUser, logout } = useAuthStore();

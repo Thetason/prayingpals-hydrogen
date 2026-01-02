@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Link } from '@remix-run/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCartStore } from '@/lib/store/cartStore';
+import { useCartStore } from '~/lib/store/cartStore';
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);

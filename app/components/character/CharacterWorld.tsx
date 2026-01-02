@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useCharacterWorldStore } from '@/lib/store/characterWorldStore';
-import { characters, getCharacterById } from '@/lib/characterData';
+import { useCharacterWorldStore } from '~/lib/store/characterWorldStore';
+import { characters, getCharacterById } from '~/lib/characterData';
 import { Character } from './Character';
 import { CharacterStoryModal } from './CharacterStoryModal';
 import { motion } from 'framer-motion';
